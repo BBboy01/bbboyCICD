@@ -1,5 +1,5 @@
 #!/bin/bash
-WORK_PATH='/html/'
+WORK_PATH='/html/bbblog/bbboyFrontend'
 cd $WORK_PATH
 # 清除暂存区
 git reset --hard origin/master
