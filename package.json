@@ -1,0 +1,13 @@
+{
+  "name": "CICD",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "serve": "nodemon webhook.js",
+    "start": "pm2 start webhook.js --name webhook --watch"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
