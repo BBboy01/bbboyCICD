@@ -7,7 +7,13 @@ const sendMail = require("./sendMail");
 const { SECRET } = require("./config");
 
 function sign(body) {
-  console.log(body, SECRET);
+  console.log(
+    "sha1" + crypto.createHmac("sha1", SECRET).update(body).digest("hex")
+  );
+  console.log(
+    "sha1" +
+      crypto.createHmac("sha1", SECRET).update(body.toString()).digest("hex")
+  );
   return "sha1" + crypto.createHmac("sha1", SECRET).update(body).digest("hex");
 }
 
