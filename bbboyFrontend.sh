@@ -5,6 +5,6 @@ cd $WORK_PATH
 git reset --hard origin/master
 git clean -f
 # 拉取新代码
-git pull origin/master
+git pull
 # 开始构建
 yarn && yarn build

@@ -28,7 +28,6 @@ const server = http.createServer((req, res) => {
       // 部署
       if (event === "push") {
         const payload = JSON.parse(body);
-        console.log(`执行脚本 ./${payload.repository.name}.sh`);
         const child_process = spawn("sh", [`./${payload.repository.name}.sh`]);
         let buffers = [];
         child_process.stdout.on("data", (buffer) => {
