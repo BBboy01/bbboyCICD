@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
       const body = Buffer.concat(buffers);
       const event = req.headers["x-github-event"]; // push
       const signature = req.headers["x-hub-signature"]; // 需要验证的签名
+      console.log(signature);
       if (signature !== sign(body)) {
         return res.end("Not Allow");
       }
@@ -28,6 +29,7 @@ const server = http.createServer((req, res) => {
       // 部署
       if (event === "push") {
         const payload = JSON.parse(body);
+        console.log(`执行脚本 ./${payload.repository.name}.sh`);
         const child_process = spawn("sh", [`./${payload.repository.name}.sh`]);
         let buffers = [];
         child_process.stdout.on("data", (buffer) => {
