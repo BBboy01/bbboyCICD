@@ -1,6 +1,6 @@
 const http = require("http");
 const crypto = require("crypto");
-const spawn = require("child_process");
+const { spawn } = require("child_process");
 
 const sendMail = require("./sendMail");
 
