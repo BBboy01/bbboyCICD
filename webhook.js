@@ -7,14 +7,7 @@ const sendMail = require("./sendMail");
 const { SECRET } = require("./config");
 
 function sign(body) {
-  console.log(
-    "sha1" + crypto.createHmac("sha1", SECRET).update(body).digest("hex")
-  );
-  console.log(
-    "sha1" +
-      crypto.createHmac("sha1", SECRET).update(body.toString()).digest("hex")
-  );
-  return "sha1" + crypto.createHmac("sha1", SECRET).update(body).digest("hex");
+  return "sha1=" + crypto.createHmac("sha1", SECRET).update(body).digest("hex");
 }
 
 const server = http.createServer((req, res) => {
@@ -27,7 +20,6 @@ const server = http.createServer((req, res) => {
       const body = Buffer.concat(buffers);
       const event = req.headers["x-github-event"]; // push
       const signature = req.headers["x-hub-signature"]; // 需要验证的签名
-      console.log(signature);
       if (signature !== sign(body)) {
         return res.end("Not Allow");
       }
