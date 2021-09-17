@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "nodemon webhook.js",
     "start": "pm2 start webhook.js --name webhook --watch",
-    "deploy": "git add . && git commit -m '.' && git push && pm2 deploy ./configs/ecosystem.config.js production update"
+    "deploy": "git add . && git commit -m '.' && git push && pm2 deploy ./ecosystem.config.js production update"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
